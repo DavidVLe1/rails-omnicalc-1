@@ -31,7 +31,7 @@ class ZebraController < ApplicationController
     @apr = params.fetch("user_apr").to_f
     @num_of_years = params.fetch("user_years").to_i
     @principal = params.fetch("user_pv").to_f
-    @payment = (@apr / 100 * @principal) / (1 - (1 + @apr / 100) ** (-12 * @num_of_years))
+    @payment = (@apr / 100/12 * @principal) / (1 - (1 + @apr / 100/12) ** (-12 * @num_of_years))
     render({ :template => "calculator_templates/payment_result" })
   end
 
